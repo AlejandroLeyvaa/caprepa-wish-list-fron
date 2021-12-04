@@ -1,0 +1,65 @@
+<div class="text-container">
+    <h1>Mi lista de sugerencias de regalo</h1>
+</div>
+<div class="wish wish-container">
+
+    <div class="form">
+        <div class="form shadow">
+            <h2>Añadir sugerencia</h2>
+            <form id="form" class="">
+                <div class="input-container">
+                    <label for="productName"
+                        class="form-label form-label roboto-font font-color-black font-weight-bold form-label">Nombre
+                        del regalo*</label>
+                    <input class="form-control" [(ngModel)]="productName" type="text" name="productName" id="">
+                </div>
+                <div class="input-container">
+                    <label for="productPrice" class="roboto-font font-color-black font-weight-bold form-label">Precio
+                        del regalo*</label>
+                    <input class="form-control" [(ngModel)]="productPrice" type="text" name="productPrice" id="">
+                </div>
+                <div class="input-container">
+                    <label for="productComment"
+                        class="roboto-font font-color-black font-weight-bold form-label">Descripción </label>
+                    <textarea class="form-control" [(ngModel)]="productComment" type="text" name="productComment" id=""
+                        cols="30" rows="5"></textarea>
+                </div>
+                <div class="input-container text-area">
+                    <label for="productUrl"
+                        class="roboto-font font-color-black font-weight-bold form-label">URL del Regalo</label>
+                    <textarea class="form-control" [(ngModel)]="productUrl" type="text" name="productUrl" id=""
+                        cols="30" rows="5"></textarea>
+                </div>
+                <label class="form-label" for="image">
+                    <input class="form-control" type="file" name="wish-image" (change)="getImageFromFileInput($event)"
+                        id="product-img">
+                </label>
+
+                <div class="buttons-container">
+                    <button class="btn btn-light">Cancelar</button>
+                    <button id="submit" class="btn btn-success" (click)="addProduct()">Añadir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="wish-list-container">
+        <div class="wish-list-void" *ngIf="!productsList.length">
+            <h2>Lista vacía</h2>
+        </div>
+        <ul *ngFor="let item of productsList">
+            <li class="wish-item-container shadow">
+                <figure *ngIf="item.imageData.url">
+                    <img [src]=item.imageData.url alt="">
+                </figure>
+                <div class="wish-item-data">
+                    <h3 class="wish-name">{{ item.product.name }}</h3>
+                    <p class="wish-price">{{ item.product.price }}</p>
+                    <div class="wish-description">
+                        <p>{{ item.productComment }}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>

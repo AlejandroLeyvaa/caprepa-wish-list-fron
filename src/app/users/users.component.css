@@ -1,0 +1,52 @@
+
+.wish-list-container {
+  width: 800px;
+  height: 600px;
+  margin: 32px 0;
+  padding: 0 36px;
+}
+
+.wish-list-container::-webkit-scrollbar {
+  border-radius: 10px;
+  background-color: #ffe9e9;
+}
+
+.wish-list-container::-webkit-scrollbar-thumb {
+  background-color: #ff5d5d;
+  border-radius: 10px;
+}
+
+.wish-item-container {
+  margin: 36px 0;
+}
+
+.wish-item-container,
+.wish-list-void {
+  border-radius: 10px;
+  width: 100%;
+  height: 256px;
+  display: flex;
+}
+
+.wish-item-container figure {
+  width: 256px;
+  height: inherit;
+}
+
+.wish-item-container figure img {
+  object-fit: cover;
+  padding: 16px;
+}
+
+.wish-list-void {
+  border: 3px dashed #dc3545;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wish-item-data {
+  width: 100%;
+  padding: 16px;
+}

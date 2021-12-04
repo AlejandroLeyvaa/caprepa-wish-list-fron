@@ -1,0 +1,29 @@
+.user {
+  display: flex;
+}
+
+.user-data {
+  margin-left: 36px;
+}
+
+.user-card {
+  border-radius: 10px;
+  width: 600px;
+  height: max-content;
+  /* max-height: 600px; */
+  /* min-height: 600px; */
+  padding: 32px;
+}
+
+
+.user-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+.user-card-header figure {
+  background-color: black;
+  height: 256px;
+  width: 256px;
+  border-radius: 128px;
+}

@@ -1,0 +1,21 @@
+<div class="wish-list-container">
+
+<ul *ngFor="let wish of wishList">
+    <li class="wish-item-container shadow">
+        <figure>
+            <img src={{URL.concat(wish.wish_image_url)}} alt="">
+        </figure>
+
+        <div class="wish-item-data">
+            <h2>{{ wish.user_name }}</h2>
+            <h3>{{ wish.wish_name }}</h3>
+            <p>$ {{ wish.wish_price }} MXN</p>
+            <p>{{ wish.wish_description }}</p>
+            <a [href]="wish.wish_url">Ver poducto</a>
+            <div>
+                <p></p>
+            </div>
+        </div>
+    </li>
+</ul>
+<div>

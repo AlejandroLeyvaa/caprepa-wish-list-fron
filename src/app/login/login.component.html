@@ -1,0 +1,28 @@
+<div class="section-container">
+    <div class="form shadow">
+        <div class="">
+            <h2>Iniciar sesión</h2>
+            <form id="form" class="">
+                <div class="input-container">
+                    <label for="userName"
+                        class="roboto-font font-color-black font-weight-bold form-label">Nombre*</label>
+                    <input class="form-control" [(ngModel)]="userName" type="text" name="user_name" id="userName">
+                </div>
+                <div class="input-container">
+                    <label for="userEmail"
+                        class="roboto-font font-color-black font-weight-bold form-label">e-mail*</label>
+                    <input class="form-control" [(ngModel)]="userEmail" type="text" name="user_email" id="userEmail">
+                </div>
+                <div class="input-container">
+                    <label for="userPassword"
+                        class="roboto-font font-color-black font-weight-bold form-label">Contraseña*</label>
+                    <input class="form-control" [(ngModel)]="userPassword" type="password" name="user_password"
+                        id="userPassword">
+                </div>
+                <div class="buttons-container d-grid gap-2">
+                    <button id="loginButton" class="btn btn-success" (click)="createUser()">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
