@@ -42,7 +42,7 @@ export class SignComponent implements OnInit {
       userPassword,
       departmentId
     } = this;
-    if (!userName.length || !userEmail.length || !userPassword.length || !departmentId) {
+    if (!userName.length || !userEmail.length || !userPassword.length) {
       buttonSubmit?.setAttribute('disabled', 'true');
       return;
     }
