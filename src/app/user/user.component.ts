@@ -48,7 +48,7 @@ export class UserComponent implements OnInit {
   }
 
   async getDepartments() {
-    const request = await fetch('http://localhost:3000/api/auth/departments');
+    const request = await fetch('https://serene-springs-53935.herokuapp.com/api/auth/departments');
     const response = await request.json();
     const { data } = await response;
 
@@ -57,10 +57,10 @@ export class UserComponent implements OnInit {
   }
 
   async getCurrentUserData() {
-    const userId = sessionStorage.getItem('user-id');
+    const userId = localStorage.getItem('user-id');
     const token = localStorage.getItem('token');
     if(userId && token?.length) {
-      const URL  = `http://localhost:3000/api/auth/users/${userId}`;
+      const URL  = `https://serene-springs-53935.herokuapp.com/api/auth/users/${userId}`;
       const response = await fetch(URL);
       const {data} = await response.json();
 
@@ -76,7 +76,7 @@ export class UserComponent implements OnInit {
 
   updateImage() {
     const formData = new FormData();
-    const id: any = sessionStorage.getItem('user-id'); 
+    const id: any = localStorage.getItem('user-id'); 
 
     formData.append('user-image', this.file);
     formData.append('user_id', id);
@@ -85,10 +85,10 @@ export class UserComponent implements OnInit {
 
   updateUser() {
     const data = {
-      user_id: sessionStorage.getItem('user-id'),
-      user_name: this.userName || sessionStorage.getItem('user-name'),
-      user_email: this.userEmail || sessionStorage.getItem('user-email'),
-      user_password: this.userPassword || sessionStorage.getItem('user-password'), 
+      user_id: localStorage.getItem('user-id'),
+      user_name: this.userName || localStorage.getItem('user-name'),
+      user_email: this.userEmail || localStorage.getItem('user-email'),
+      user_password: this.userPassword || localStorage.getItem('user-password'), 
       department_id: this.departmentId || '1',
     }
 
@@ -97,7 +97,7 @@ export class UserComponent implements OnInit {
   }
 
   async sendUserImage(formData: any) {
-    const response = await fetch('http://localhost:3000/api/auth/users/user-update-image', {
+    const response = await fetch('https://serene-springs-53935.herokuapp.com/api/auth/users/user-update-image', {
       method: 'PUT',
       body: formData,
     });
@@ -106,7 +106,7 @@ export class UserComponent implements OnInit {
   }
 
   async sendData(dataForm: any) {
-    const response = await fetch('http://localhost:3000/api/auth/users/user-update', {
+    const response = await fetch('https://serene-springs-53935.herokuapp.com/api/auth/users/user-update', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -120,8 +120,8 @@ export class UserComponent implements OnInit {
       modalContainer?.classList.add('fade-in');
       modalContainer?.classList.add('show');
     }
-    sessionStorage.setItem('user-name', this.userName)
-    sessionStorage.setItem('user-email', this.userEmail)
+    localStorage.setItem('user-name', this.userName)
+    localStorage.setItem('user-email', this.userEmail)
     this.submit = true;
   }
 

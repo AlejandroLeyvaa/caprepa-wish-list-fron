@@ -57,14 +57,14 @@ export class WishListComponent implements OnInit {
   addProduct() {
     const img = document.createElement('img');
     const formData = new FormData();
-    const sessionStorageDataId: string | null = sessionStorage.getItem('user-id');
+    const localStorageDataId: string | null = localStorage.getItem('user-id');
     
     formData.append('wish-image', this.file);
     formData.append('wish_name', this.productName);
     formData.append('wish_price', this.productPrice);
     formData.append('wish_description', this.productComment);
     formData.append('wish_url', this.productUrl);
-    formData.append('user_id', sessionStorageDataId!!);
+    formData.append('user_id', localStorageDataId!!);
 
     img.src = this.imageURL;
     const data = {
@@ -75,7 +75,7 @@ export class WishListComponent implements OnInit {
         wish_url: this.productUrl,
       },
       user: {
-        name: sessionStorage.getItem('user-name'),
+        name: localStorage.getItem('user-name'),
       },
       imageData: {
         file: this.file,
@@ -88,7 +88,7 @@ export class WishListComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch('http://localhost:3000/api/wish-list', {
+    fetch('https://serene-springs-53935.herokuapp.com/api/wish-list', {
       method: 'POST',
       body: data,
     }).then((response) => response.json())

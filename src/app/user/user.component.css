@@ -19,6 +19,7 @@
 .user-card-header {
   display: flex;
   justify-content: center;
+  padding: 16px;
 }
 
 .user-card-header figure {
@@ -27,3 +28,25 @@
   width: 256px;
   border-radius: 128px;
 }
+
+
+.user-card-header figure img {
+  border-radius: 128px;
+}
+
+.user-card-body .text-container {
+  margin-bottom: 8px;
+}
+
+.user-card-body .text-container h1 {
+  font-weight: bold;
+}
+
+.user-card-body .text-container h2, .user-card-body .text-container span {
+  font-weight: 600;
+}
+
+.user-card-body .text-container h3 {
+  font-weight: 400;
+}
+

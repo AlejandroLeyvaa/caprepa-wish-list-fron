@@ -16,7 +16,7 @@ export class UsersComponent implements OnInit {
   }
 
   async getWishListOfAllUsers(): Promise<any> {
-    const URL  = 'http://localhost:3000/api/wish-list/users-wish-list';
+    const URL  = 'https://serene-springs-53935.herokuapp.com/api/wish-list/users-wish-list';
     const response = await fetch(URL);
     const { data } = await response.json();
     
