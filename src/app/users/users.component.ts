@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit {
     
     this.wishList = data;
 
-    console.log(`data`, data);
+    console.log('this.wishList :>> ', this.wishList.sort((a,b) => a.user_id-b.user_id));
 
     return data;
   }
