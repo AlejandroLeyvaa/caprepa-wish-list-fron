@@ -27,6 +27,9 @@
   height: 256px;
   display: flex;
 }
+.wish-item-container {
+  height: max-content;
+}
 
 .wish-item-container figure {
   width: 256px;
@@ -52,9 +55,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-  body {
-    background-color: red;
-  }
   .wish-list-container {
     width: 100%;
     margin: 32px 0;
