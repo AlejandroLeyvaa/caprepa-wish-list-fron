@@ -17,7 +17,6 @@ export class UserComponent implements OnInit {
   userPassword: string = '';
   userImage: string = '';
   departmentId: string | number = '';
-  responseData: any;
   departments: any[] = [{ id: 1, department_name: 'Sistemas' }];
   emailValid: boolean = false;
   submit: boolean = false;
@@ -25,7 +24,7 @@ export class UserComponent implements OnInit {
   file: any;
   data: any;
   getUserImageUrl: any = '';
-  URL: string = 'http://localhost:3000/';
+  URL: string = 'https://serene-springs-53935.herokuapp.com/';
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -43,7 +42,7 @@ export class UserComponent implements OnInit {
     const imageURL = window.URL.createObjectURL(file);
 
     this.file = file;
-    
+
     this.imageURL = this.sanitizer.bypassSecurityTrustUrl(imageURL);
   }
 
@@ -59,14 +58,16 @@ export class UserComponent implements OnInit {
   async getCurrentUserData() {
     const userId = localStorage.getItem('user-id');
     const token = localStorage.getItem('token');
-    if(userId && token?.length) {
-      const URL  = `https://serene-springs-53935.herokuapp.com/api/auth/users/${userId}`;
+    if (userId && token?.length) {
+      const URL = `https://serene-springs-53935.herokuapp.com/api/auth/users/${userId}`;
       const response = await fetch(URL);
-      const {data} = await response.json();
+      const responseData = await response.json();
 
-      // this.responseData = responseData
-      this.data = data;
-      this.getUserImageUrl = this.URL.concat(this.data[0]['user_image']);
+      this.data = responseData.data;
+      console.log(`data`, this.data);
+      if (responseData.valid) {
+        this.getUserImageUrl = this.URL.concat(this.data[0]['user_image']);
+      }
     }
   }
 
@@ -76,7 +77,7 @@ export class UserComponent implements OnInit {
 
   updateImage() {
     const formData = new FormData();
-    const id: any = localStorage.getItem('user-id'); 
+    const id: any = localStorage.getItem('user-id');
 
     formData.append('user-image', this.file);
     formData.append('user_id', id);
@@ -88,7 +89,7 @@ export class UserComponent implements OnInit {
       user_id: localStorage.getItem('user-id'),
       user_name: this.userName || localStorage.getItem('user-name'),
       user_email: this.userEmail || localStorage.getItem('user-email'),
-      user_password: this.userPassword || localStorage.getItem('user-password'), 
+      user_password: this.userPassword || localStorage.getItem('user-password'),
       department_id: this.departmentId || '1',
     }
 

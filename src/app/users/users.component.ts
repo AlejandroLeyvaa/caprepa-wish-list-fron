@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class UsersComponent implements OnInit {
   
   wishList: any[] = [];
-  URL: string = 'http://localhost:3000/';
+  URL: string = 'https://serene-springs-53935.herokuapp.com/';
   constructor() { }
 
   ngOnInit(): void {
