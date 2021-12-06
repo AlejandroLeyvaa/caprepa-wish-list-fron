@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch('http://localhost:3000/api/auth/users/login', {
+    fetch('http://192.168.2.250:3000/api/auth/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -89,7 +89,7 @@ export class WishListComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch('http://localhost:3000/api/wish-list', {
+    fetch('http://192.168.2.250:3000/api/wish-list', {
       method: 'POST',
       body: data,
     }).then((response) => response.json())

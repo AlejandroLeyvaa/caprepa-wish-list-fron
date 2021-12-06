@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
   file: any;
   data: any;
   getUserImageUrl: any = '';
-  URL: string = 'http://localhost:3000/';
+  URL: string = 'http://192.168.2.250:3000/';
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -54,7 +54,7 @@ export class UserComponent implements OnInit {
   }
 
   async getDepartments() {
-    const request = await fetch('http://localhost:3000/api/auth/departments');
+    const request = await fetch('http://192.168.2.250:3000/api/auth/departments');
     const response = await request.json();
     const { data } = await response;
 
@@ -68,7 +68,7 @@ export class UserComponent implements OnInit {
     const userId = localStorage.getItem('user-id');
     const token = localStorage.getItem('token');
     if (userId && token?.length) {
-      const URL = `http://localhost:3000/api/auth/users/${userId}`;
+      const URL = `http://192.168.2.250:3000/api/auth/users/${userId}`;
       const response = await fetch(URL);
       const responseData = await response.json();
 
@@ -105,8 +105,8 @@ export class UserComponent implements OnInit {
   }
 
   async sendUserImage(formData: any) {
-    // const response = await fetch('http://localhost:3000/api/auth/users/user-update-image', {
-    const response = await fetch('http://localhost:3000/api/auth/users/user-update-image', {
+    // const response = await fetch('http://192.168.2.250:3000/api/auth/users/user-update-image', {
+    const response = await fetch('http://192.168.2.250:3000/api/auth/users/user-update-image', {
       method: 'PUT',
       body: formData,
     });
@@ -115,8 +115,8 @@ export class UserComponent implements OnInit {
   }
 
   async sendData(dataForm: any) {
-    // const response = await fetch('http://localhost:3000/api/auth/users/user-update', {
-    const response = await fetch('http://localhost:3000/api/auth/users/user-update', {
+    // const response = await fetch('http://192.168.2.250:3000/api/auth/users/user-update', {
+    const response = await fetch('http://192.168.2.250:3000/api/auth/users/user-update', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
