@@ -26,4 +26,8 @@ export class UsersComponent implements OnInit {
 
     return data;
   }
+
+  edit(wish: any) {
+    console.log(`events`, wish)
+  }
 }

@@ -1,7 +1,7 @@
 <div class="wish-list-container">
 
-<ul *ngFor="let wish of wishList">
-    <li class="wish-item-container shadow">
+<ul>
+    <li class="wish-item-container shadow" *ngFor="let wish of wishList" (click)="edit(wish)">
         <figure>
             <img src={{URL.concat(wish.wish_image_url)}} alt="">
         </figure>

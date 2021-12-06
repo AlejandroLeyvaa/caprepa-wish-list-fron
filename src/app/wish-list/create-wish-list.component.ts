@@ -84,8 +84,10 @@ export class WishListComponent implements OnInit {
       }
     }
     this.productsList.push(data);
-    this.productsList.map((item) => console.log(item.imageData.url));
-    this.sendData(formData);
+
+    console.log(`this.productsList`, this.productsList)
+    this.productsList.map((item) => console.log('sdfsdffsdf', item.imageData.url));
+    // this.sendData(formData);
   }
 
   sendData(data: any) {

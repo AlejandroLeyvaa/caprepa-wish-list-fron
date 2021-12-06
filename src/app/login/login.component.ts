@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
     const buttonSubmit = document.getElementById('loginButton');
 
     const {
-      userName,
+      // userName,
       userEmail,
       userPassword,
     } = this;
-    if(!userName.length || !userEmail.length || !userPassword.length) {
+    if(!userEmail.length || !userPassword.length) {
       buttonSubmit?.setAttribute('disabled', 'true');
       return;
     }

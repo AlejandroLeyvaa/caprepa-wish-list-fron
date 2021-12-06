@@ -81,6 +81,10 @@
   overflow-y: scroll;
 }
 
+.wish-description p {
+  word-break: break-all;
+}
+
 .wish-description::-webkit-scrollbar {
   border-radius: 10px;
   background-color: #ffe9e9;
