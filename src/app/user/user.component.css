@@ -15,7 +15,6 @@
   padding: 32px;
 }
 
-
 .user-card-header {
   display: flex;
   justify-content: center;
@@ -29,7 +28,6 @@
   border-radius: 128px;
 }
 
-
 .user-card-header figure img {
   border-radius: 128px;
 }
@@ -40,13 +38,32 @@
 
 .user-card-body .text-container h1 {
   font-weight: bold;
+  word-break: break-word;
 }
 
-.user-card-body .text-container h2, .user-card-body .text-container span {
+.user-card-body .text-container h2,
+.user-card-body .text-container span {
   font-weight: 600;
+  word-break: break-word;
 }
 
 .user-card-body .text-container h3 {
   font-weight: 400;
+  word-break: break-word;
 }
 
+.user-card-body .text-container p {
+  word-break: break-word;
+}
+
+@media screen and (max-width: 1024px) {
+  .user-data {
+    width: 90%;
+    margin: 0;
+    margin-left: 0;
+  }
+
+  .user-card {
+    width: 100%
+  }
+}

@@ -51,7 +51,7 @@ export class SignComponent implements OnInit {
   }
 
   async getDepartments() {
-    const request = await fetch('https://serene-springs-53935.herokuapp.com/api/auth/departments');
+    const request = await fetch('http://localhost:3000/api/auth/departments');
     const response = await request.json();
     const { data } = response;
 
@@ -104,7 +104,7 @@ export class SignComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch('https://serene-springs-53935.herokuapp.com/api/auth/users/sign-up', {
+    fetch('http://localhost:3000/api/auth/users/sign-up', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

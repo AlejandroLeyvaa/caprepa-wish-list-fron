@@ -20,6 +20,7 @@ export class WishListComponent implements OnInit {
   imageURL: any;
   file: any;
   counter = 0;
+  
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
@@ -88,7 +89,7 @@ export class WishListComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch('https://serene-springs-53935.herokuapp.com/api/wish-list', {
+    fetch('http://localhost:3000/api/wish-list', {
       method: 'POST',
       body: data,
     }).then((response) => response.json())

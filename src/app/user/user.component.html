@@ -4,20 +4,25 @@
     <form id="form" class="contact-form-container">
       <div class="input-container">
         <label class="form-label" for="userName"
-          class="roboto-font font-color-black font-weight-bold form-label">Nombre*</label>
+          class="roboto-font font-color-black font-weight-bold form-label">Nombre</label>
         <input class="form-control" [(ngModel)]="userName" type="text" name="userName" id="">
       </div>
       <div class="input-container">
         <label for="userEmail"
-          class="form-label roboto-font font-color-black font-weight-bold form-label">e-mail*</label>
+          class="form-label roboto-font font-color-black font-weight-bold form-label">e-mail</label>
         <input class="form-control" [(ngModel)]="userEmail" (ngModelChange)="validateEmail($event)" type="text"
           name="userEmail" id="email">
         <div id="invalid-email" class="hide" style="color: red; font-size: 12px;">Formato de correo no valido</div>
       </div>
       <div class="input-container">
         <label class="form-label" for="userPassword"
-          class="roboto-font font-color-black font-weight-bold form-label">Contraseña*</label>
+          class="roboto-font font-color-black font-weight-bold form-label">Contraseña</label>
         <input class="form-control" [(ngModel)]="userPassword" type="text" name="userPassword" id="">
+      </div>
+      <div class="input-container">
+        <label class="form-label" for="userPassword"
+          class="roboto-font font-color-black font-weight-bold form-label">Descripción</label>
+        <textarea class="form-control"  name="userDescription" id="" [(ngModel)]="userDescription" cols="30" rows="10"></textarea>
       </div>
       <div class="input-container">
         <label class="form-label" for="userPassword"
@@ -75,7 +80,7 @@
             <input class="form-control" type="file" name="wish-image" (change)="getImageFromFileInput($event)"
               id="product-img">
           </label>
-    
+
           <div class="buttons-container d-grid gap-2">
             <button id="signButton" class="btn btn-success" (click)="updateImage()">Actualizar Imagen</button>
           </div>

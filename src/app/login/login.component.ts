@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch('https://serene-springs-53935.herokuapp.com/api/auth/users/login', {
+    fetch('http://localhost:3000/api/auth/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
     })
       .then((response) => response.json())
       .then((data) => {
+
         localStorage.setItem('token', data.token);
         localStorage.setItem('user-name', this.userName);
         localStorage.setItem('user-email', this.userEmail);

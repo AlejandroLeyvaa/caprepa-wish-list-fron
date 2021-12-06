@@ -12,19 +12,21 @@ import {
 })
 export class UserComponent implements OnInit {
 
-  userName: string = '';
-  userEmail: string = '';
-  userPassword: string = '';
+  userName: any = localStorage.getItem('user-name');
+  userEmail: any = localStorage.getItem('user-email');
+  userPassword: any;
   userImage: string = '';
+  userDescription: any = localStorage.getItem('user-description');
   departmentId: string | number = '';
-  departments: any[] = [{ id: 1, department_name: 'Sistemas' }];
+  departmentName: string = '';
+  departments: any;
   emailValid: boolean = false;
   submit: boolean = false;
   imageURL: any;
   file: any;
   data: any;
   getUserImageUrl: any = '';
-  URL: string = 'https://serene-springs-53935.herokuapp.com/';
+  URL: string = 'http://localhost:3000/';
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -35,6 +37,11 @@ export class UserComponent implements OnInit {
 
   ngAfterContentChecked(): void {
     this.data;
+    if(this.data) {
+      this.data[0].user_name = this.userName;
+      this.data[0].user_email = this.userEmail;
+      this.data[0].user_description = this.userDescription;
+    }
   }
 
   getImageFromFileInput(event: any) {
@@ -47,11 +54,13 @@ export class UserComponent implements OnInit {
   }
 
   async getDepartments() {
-    const request = await fetch('https://serene-springs-53935.herokuapp.com/api/auth/departments');
+    const request = await fetch('http://localhost:3000/api/auth/departments');
     const response = await request.json();
     const { data } = await response;
 
-    this.departments = data;
+    this.departmentId = data[0].department_id;
+    this.departmentName = data[0]._department_name;
+    
     return data;
   }
 
@@ -59,12 +68,11 @@ export class UserComponent implements OnInit {
     const userId = localStorage.getItem('user-id');
     const token = localStorage.getItem('token');
     if (userId && token?.length) {
-      const URL = `https://serene-springs-53935.herokuapp.com/api/auth/users/${userId}`;
+      const URL = `http://localhost:3000/api/auth/users/${userId}`;
       const response = await fetch(URL);
       const responseData = await response.json();
 
       this.data = responseData.data;
-      console.log(`data`, this.data);
       if (responseData.valid) {
         this.getUserImageUrl = this.URL.concat(this.data[0]['user_image']);
       }
@@ -87,18 +95,18 @@ export class UserComponent implements OnInit {
   updateUser() {
     const data = {
       user_id: localStorage.getItem('user-id'),
-      user_name: this.userName || localStorage.getItem('user-name'),
-      user_email: this.userEmail || localStorage.getItem('user-email'),
-      user_password: this.userPassword || localStorage.getItem('user-password'),
-      department_id: this.departmentId || '1',
+      user_name: this.userName,
+      user_email: this.userEmail,
+      user_description: this.userDescription,
+      user_password: this.userPassword,
+      department_id: this.departmentId,
     }
-
-    console.log(`data session`, data)
     this.sendData(data);
   }
 
   async sendUserImage(formData: any) {
-    const response = await fetch('https://serene-springs-53935.herokuapp.com/api/auth/users/user-update-image', {
+    // const response = await fetch('http://localhost:3000/api/auth/users/user-update-image', {
+    const response = await fetch('http://localhost:3000/api/auth/users/user-update-image', {
       method: 'PUT',
       body: formData,
     });
@@ -107,7 +115,8 @@ export class UserComponent implements OnInit {
   }
 
   async sendData(dataForm: any) {
-    const response = await fetch('https://serene-springs-53935.herokuapp.com/api/auth/users/user-update', {
+    // const response = await fetch('http://localhost:3000/api/auth/users/user-update', {
+    const response = await fetch('http://localhost:3000/api/auth/users/user-update', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -121,8 +130,9 @@ export class UserComponent implements OnInit {
       modalContainer?.classList.add('fade-in');
       modalContainer?.classList.add('show');
     }
-    localStorage.setItem('user-name', this.userName)
-    localStorage.setItem('user-email', this.userEmail)
+    localStorage.setItem('user-name', this.userName);
+    localStorage.setItem('user-email', this.userEmail);
+    localStorage.setItem('user-description', this.userDescription);
     this.submit = true;
   }
 

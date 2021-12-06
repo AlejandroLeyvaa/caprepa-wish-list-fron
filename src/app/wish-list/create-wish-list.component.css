@@ -91,3 +91,9 @@
   border-radius: 10px;
 }
 
+
+@media screen and (max-width: 1024px) {
+  .wish-list-container {
+    width: 90%;
+  }
+}
