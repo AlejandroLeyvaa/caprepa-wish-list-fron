@@ -3,8 +3,6 @@ import {
   DomSanitizer
 } from '@angular/platform-browser';
 
-
-
 @Component({
   selector: 'app-create-wish-list',
   templateUrl: './create-wish-list.component.html',
@@ -19,6 +17,7 @@ export class WishListComponent implements OnInit {
   show: boolean = false;
   imageURL: any;
   file: any;
+  isShowModal: boolean = false;
   counter = 0;
   
   constructor(private sanitizer: DomSanitizer) { }
@@ -87,6 +86,7 @@ export class WishListComponent implements OnInit {
 
     console.log(`this.productsList`, this.productsList)
     this.productsList.map((item) => console.log(item.imageData.url));
+    this.isShowModal  = true;
     this.sendData(formData);
   }
 
@@ -95,7 +95,13 @@ export class WishListComponent implements OnInit {
       method: 'POST',
       body: data,
     }).then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data)
+        // console.log(data.valid);
+        // if(data.valid) {
+
+        // }
+      });
   }
 
 }

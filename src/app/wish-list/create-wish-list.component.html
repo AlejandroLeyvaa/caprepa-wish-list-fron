@@ -16,7 +16,7 @@
                 <div class="input-container">
                     <label for="productPrice" class="roboto-font font-color-black font-weight-bold form-label">Precio
                         del regalo*</label>
-                    <input class="form-control" [(ngModel)]="productPrice" type="text" name="productPrice" id="">
+                    <input class="form-control" [(ngModel)]="productPrice" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="productPrice" id="">
                 </div>
                 <div class="input-container">
                     <label for="productComment"
@@ -61,5 +61,6 @@
             </li>
         </ul>
     </div>
-
 </div>
+
+<app-modal message="Producto añadido" [isCreated]=true></app-modal>
