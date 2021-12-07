@@ -86,7 +86,6 @@ export class WishListComponent implements OnInit {
 
     console.log(`this.productsList`, this.productsList)
     this.productsList.map((item) => console.log(item.imageData.url));
-    this.isShowModal  = true;
     this.sendData(formData);
   }
 
