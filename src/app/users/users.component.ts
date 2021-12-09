@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class UsersComponent implements OnInit {
   
   wishList: any[] = [];
-  URL: string = 'http://61fa-201-164-62-254.ngrok.io/';
+  URL: string = 'https://61fa-201-164-62-254.ngrok.io/';
   constructor() { }
 
   ngOnInit(): void {
@@ -16,7 +16,7 @@ export class UsersComponent implements OnInit {
   }
 
   async getWishListOfAllUsers(): Promise<any> {
-    const URL  = 'http://61fa-201-164-62-254.ngrok.io/api/wish-list/users-wish-list';
+    const URL  = 'https://61fa-201-164-62-254.ngrok.io/api/wish-list/users-wish-list';
     const response = await fetch(URL);
     const { data } = await response.json();
     

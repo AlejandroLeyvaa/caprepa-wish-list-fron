@@ -51,7 +51,7 @@ export class SignComponent implements OnInit {
   }
 
   async getDepartments() {
-    const request = await fetch('http://61fa-201-164-62-254.ngrok.io/api/auth/departments');
+    const request = await fetch('https://61fa-201-164-62-254.ngrok.io/api/auth/departments');
     const response = await request.json();
     const { data } = response;
 
@@ -104,7 +104,7 @@ export class SignComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch('http://61fa-201-164-62-254.ngrok.io/api/auth/users/sign-up', {
+    fetch('https://61fa-201-164-62-254.ngrok.io/api/auth/users/sign-up', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
