@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch('https://0789-201-164-62-254.ngrok.io/api/auth/users/login', {
+    fetch('http://61fa-201-164-62-254.ngrok.io/api/auth/users/login', {
       method: 'POST',
       headers: {
         'Content-Type'
