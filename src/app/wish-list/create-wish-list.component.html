@@ -31,8 +31,9 @@
                     <textarea class="form-control" [(ngModel)]="productUrl" type="text" name="productUrl" id=""
                         cols="30" rows="5"></textarea>
                 </div>
-                <label class="form-label" for="image">
-                    <input class="form-control" type="file" name="wish-image" (change)="getImageFromFileInput($event)"
+                <label class="forem-label roboto-font font-color-black font-weight-bold form-label" for="image">
+                    Añadir imagen*
+                    <input class="form-control" type="file" name="wish-image" required (change)="getImageFromFileInput($event)"
                         id="product-img">
                 </label>
 

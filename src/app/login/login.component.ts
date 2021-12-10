@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+ 
 
 @Component({
   selector: 'app-login',
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch(`${environment.api}/api/auth/users/login`, {
+    fetch(`https://513c-201-164-62-254.ngrok.io/api/auth/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type'

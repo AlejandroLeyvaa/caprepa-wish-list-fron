@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
+ 
 
 @Component({
   selector: 'app-users',
@@ -7,9 +7,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  
+
   wishList: any[] = [];
-  URL: string = `${environment.api}/`;
+  URL: string = `https://513c-201-164-62-254.ngrok.io/`;
   constructor() { }
 
   ngOnInit(): void {
@@ -17,13 +17,13 @@ export class UsersComponent implements OnInit {
   }
 
   async getWishListOfAllUsers(): Promise<any> {
-    const URL  = `${environment.api}/api/wish-list/users-wish-list`;
+    const URL = `https://513c-201-164-62-254.ngrok.io/api/wish-list/users-wish-list`;
     const response = await fetch(URL);
     const { data } = await response.json();
-    
+
     this.wishList = data;
 
-    console.log('this.wishList :>> ', this.wishList.sort((a,b) => a.user_id-b.user_id));
+    console.log('this.wishList :>> ', this.wishList.sort((a, b) => a.user_id - b.user_id));
 
     return data;
   }

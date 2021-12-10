@@ -40,7 +40,7 @@ export class WishListComponent implements OnInit {
       productPrice,
       productComment,
     } = this;
-    if(!productName.length || !productPrice.length) {
+    if(!productName.length || !productPrice.length || !this.imageURL) {
       buttonSubmit?.setAttribute('disabled', 'true');
       return;
     }
@@ -109,7 +109,7 @@ export class WishListComponent implements OnInit {
 
 
   sendData(data: any) {
-    fetch(`${environment.api}/api/wish-list`, {
+    fetch(`https://513c-201-164-62-254.ngrok.io/api/wish-list`, {
       method: 'POST',
       body: data,
     }).then((response) => response.json())
