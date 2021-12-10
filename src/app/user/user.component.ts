@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import {
   DomSanitizer
@@ -26,7 +27,7 @@ export class UserComponent implements OnInit {
   file: any;
   data: any;
   getUserImageUrl: any = '';
-  URL: string = 'https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/';
+  URL: string = environment.api;
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -54,7 +55,7 @@ export class UserComponent implements OnInit {
   }
 
   async getDepartments() {
-    const request = await fetch('https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/auth/departments');
+    const request = await fetch(`${environment.api}/api/auth/departments`);
     const response = await request.json();
     const { data } = await response;
 
@@ -68,7 +69,7 @@ export class UserComponent implements OnInit {
     const userId = localStorage.getItem('user-id');
     const token = localStorage.getItem('token');
     if (userId && token?.length) {
-      const URL = `https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/auth/users/${userId}`;
+      const URL = `${environment.api}/api/auth/users/${userId}`;
       const response = await fetch(URL);
       const responseData = await response.json();
 
@@ -105,8 +106,7 @@ export class UserComponent implements OnInit {
   }
 
   async sendUserImage(formData: any) {
-    // const response = await fetch('https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/auth/users/user-update-image', {
-    const response = await fetch('https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/auth/users/user-update-image', {
+    const response = await fetch(`${environment.api}/api/auth/users/user-update-image`, {
       method: 'PUT',
       body: formData,
     });
@@ -115,8 +115,7 @@ export class UserComponent implements OnInit {
   }
 
   async sendData(dataForm: any) {
-    // const response = await fetch('https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/auth/users/user-update', {
-    const response = await fetch('https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/auth/users/user-update', {
+    const response = await fetch(`${environment.api}/api/auth/users/user-update`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

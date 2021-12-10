@@ -16,7 +16,8 @@
                 <div class="input-container">
                     <label for="productPrice" class="roboto-font font-color-black font-weight-bold form-label">Precio
                         del regalo*</label>
-                    <input class="form-control" [(ngModel)]="productPrice" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="productPrice" id="">
+                    <input class="form-control" [(ngModel)]="productPrice" type="text"
+                        onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="productPrice" id="">
                 </div>
                 <div class="input-container">
                     <label for="productComment"
@@ -25,8 +26,8 @@
                         cols="30" rows="5"></textarea>
                 </div>
                 <div class="input-container text-area">
-                    <label for="productUrl"
-                        class="roboto-font font-color-black font-weight-bold form-label">URL del Regalo</label>
+                    <label for="productUrl" class="roboto-font font-color-black font-weight-bold form-label">URL del
+                        Regalo</label>
                     <textarea class="form-control" [(ngModel)]="productUrl" type="text" name="productUrl" id=""
                         cols="30" rows="5"></textarea>
                 </div>
@@ -62,3 +63,23 @@
         </ul>
     </div>
 </div>
+
+<!-- <div id="modal-container" class="modal-container">
+    <div class="content">
+        <div class="cross-container" (click)="hide()">
+            <div class="cross-circle shadow">
+                <div class="rect"></div>
+                <div class="rect"></div>
+            </div>
+        </div>
+
+        <div class="svg-image-container">
+            <img src={{ assetImageUrl }} alt="">
+        </div>
+
+        <article class="modal-text-container">
+            <p class="modal-text">{{ message }}</p>
+        </article>
+
+    </div>
+</div> -->

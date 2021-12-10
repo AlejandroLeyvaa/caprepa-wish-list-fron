@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import {
   DomSanitizer
@@ -19,7 +20,9 @@ export class WishListComponent implements OnInit {
   file: any;
   isShowModal: boolean = false;
   counter = 0;
-  
+  message: string = '';
+  assetImageUrl: string = '../../assets/warning-error-svgrepo-com.svg';
+
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
@@ -54,6 +57,14 @@ export class WishListComponent implements OnInit {
     this.imageURL = this.sanitizer.bypassSecurityTrustUrl(imageURL);
   }
 
+  showModal(message: string, assetUrl: string) {
+    const modalContainer = document.getElementById('modal-container');
+    modalContainer?.classList.add('fade-in');
+    modalContainer?.classList.add('show');
+    this.message = message
+    this.assetImageUrl = assetUrl 
+  }
+
   addProduct() {
     const img = document.createElement('img');
     const formData = new FormData();
@@ -65,6 +76,12 @@ export class WishListComponent implements OnInit {
     formData.append('wish_description', this.productComment);
     formData.append('wish_url', this.productUrl);
     formData.append('user_id', localStorageDataId!!);
+
+    if(!localStorageDataId) {
+      const message = 'Artículo añadido a la base de datos.';
+      const assetUrl = '../../assets/warning-error-svgrepo-com.svg';
+      this.showModal(message, assetUrl);
+    }
 
     img.src = this.imageURL;
     const data = {
@@ -89,18 +106,28 @@ export class WishListComponent implements OnInit {
     this.sendData(formData);
   }
 
+
+
   sendData(data: any) {
-    fetch('https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/wish-list', {
+    fetch(`${environment.api}/api/wish-list`, {
       method: 'POST',
       body: data,
     }).then((response) => response.json())
       .then((data) => {
         console.log(data)
-        // console.log(data.valid);
-        // if(data.valid) {
-
-        // }
+        console.log(data.valid);
+        if(data.valid) {
+          const message = 'Artículo añadido a la base de datos.';
+          const assetUrl = '../../assets/success-svgrepo-com.svg';
+          this.showModal(message, assetUrl);
+        }
       });
   }
+
+  hide() {
+    const modalContainer = document.getElementById('modal-container');
+    modalContainer?.classList.remove('show');
+  }
+
 
 }

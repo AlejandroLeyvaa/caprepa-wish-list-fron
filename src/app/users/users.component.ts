@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-users',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class UsersComponent implements OnInit {
   
   wishList: any[] = [];
-  URL: string = 'https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/';
+  URL: string = `${environment.api}/`;
   constructor() { }
 
   ngOnInit(): void {
@@ -16,7 +17,7 @@ export class UsersComponent implements OnInit {
   }
 
   async getWishListOfAllUsers(): Promise<any> {
-    const URL  = 'https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/wish-list/users-wish-list';
+    const URL  = `${environment.api}/api/wish-list/users-wish-list`;
     const response = await fetch(URL);
     const { data } = await response.json();
     

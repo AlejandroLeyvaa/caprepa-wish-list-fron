@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -51,7 +52,7 @@ export class SignComponent implements OnInit {
   }
 
   async getDepartments() {
-    const request = await fetch('https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/auth/departments');
+    const request = await fetch(`${environment.api}/api/auth/departments`);
     const response = await request.json();
     const { data } = response;
 
@@ -104,7 +105,7 @@ export class SignComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch('https://59a3-2806-101e-6-46ec-1b4-8d4a-b0b6-4ec3.ngrok.io/api/auth/users/sign-up', {
+    fetch(`${environment.api}/api/auth/users/sign-up`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
