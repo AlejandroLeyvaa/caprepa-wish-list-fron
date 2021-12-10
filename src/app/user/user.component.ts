@@ -27,7 +27,7 @@ export class UserComponent implements OnInit {
   file: any;
   data: any;
   getUserImageUrl: any = '';
-  URL: string = environment.api;
+  URL: string = 'https://513c-201-164-62-254.ngrok.io/';
 
   constructor(private sanitizer: DomSanitizer) { }
 
