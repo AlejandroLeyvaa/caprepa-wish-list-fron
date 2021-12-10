@@ -39,8 +39,9 @@ export class WishListComponent implements OnInit {
       productName,
       productPrice,
       productComment,
+      imageURL
     } = this;
-    if(!productName.length || !productPrice.length || !this.imageURL) {
+    if(!productName.length || !productPrice.length || !imageURL) {
       buttonSubmit?.setAttribute('disabled', 'true');
       return;
     }
