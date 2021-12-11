@@ -110,7 +110,7 @@ export class WishListComponent implements OnInit {
 
 
   sendData(data: any) {
-    fetch(`https://513c-201-164-62-254.ngrok.io/api/wish-list`, {
+    fetch(`https://1935-201-164-62-254.ngrok.io/api/wish-list`, {
       method: 'POST',
       body: data,
     }).then((response) => response.json())
