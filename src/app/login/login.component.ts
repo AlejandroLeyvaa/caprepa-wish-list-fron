@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   sendData(data: any) {
-    fetch(`https://3cf1-187-149-136-216.ngrok.io/api/auth/users/login`, {
+    fetch(`http://192.168.1.116:3000/api/auth/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type'
